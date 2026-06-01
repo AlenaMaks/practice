@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .forms import LoginForm, ProfileForm
+from django.contrib import messages
 
 from .forms import LoginForm
 
@@ -45,10 +47,21 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
+    user = request.user
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Данные сохранены")
+            return redirect("student_profile")
+    else:
+        form = ProfileForm(instance=user)
+
     return render(
         request,
         "student/profile.html",
         {
-            "user": request.user
+            "form": form,
+            "user": user
         }
     )

@@ -1,0 +1,109 @@
+.topbar{
+    height:70px;
+    background:#415B8D;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:0 20px;
+}
+
+.gold-line{
+    height:8px;
+    background:#D8C89B;
+}
+
+.topbar-icons{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.notification{
+    font-size:30px;
+    color:white;
+}
+
+.avatar{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    overflow:hidden;
+    cursor:pointer;
+    background:#E4E4E4;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    min-height:calc(100vh - 78px);
+}
+
+.content{
+    padding:40px;
+}
+
+/* BURGER MENU */
+
+.sidebar-menu{
+    position:fixed;
+    top:86px;
+    right:-260px;
+    width:240px;
+    height:100vh;
+    background:#D8C89B;
+    padding:25px;
+    border-radius:25px 0 0 25px;
+    transition:.3s;
+    z-index:1000;
+}
+
+.sidebar-menu.active{
+    right:0;
+}
+
+.sidebar-menu a{
+    display:block;
+    margin-bottom:25px;
+    color:#19325F;
+    font-size:18px;
+}
+
+.sidebar-menu a:hover{
+    opacity:.7;
+}
+
+.menu-disabled{
+    display:block;
+    margin-bottom:25px;
+    color:#888;
+    cursor:not-allowed;
+}
+
+/* уведы */
+.messages{
+    width:90%;
+    margin:20px auto;
+}
+
+.message{
+    padding:14px 20px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+.message.success{
+    background:#4d8c61;
+    color:white;
+}
+
+.message.error{
+    background:#a14b4b;
+    color:white;
+}

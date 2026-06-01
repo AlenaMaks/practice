@@ -1,149 +1,574 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    background: #19325F;
 }
 
-.dashboard{
+/* ==================== TOPBAR ==================== */
+.topbar {
+    height: 70px;
+    background: #415B8D;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.gold-line {
+    height: 8px;
+    background: #D8C89B;
+}
+
+.topbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.notification {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #E4E4E4;
+}
+
+/* ==================== DASHBOARD LAYOUT ==================== */
+.dashboard {
+    display: flex;
+    min-height: calc(100vh - 78px); /* учитываем топбар */
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    width: 260px;
+    background: #1e1e1e;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.sidebar .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.menu-disabled{
+    display:block;
+
+    margin-bottom:25px;
+
+    color:#8a8a8a;
+
+    cursor:not-allowed;
+}
+
+/* ==================== CONTENT ==================== */
+.content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ==================== LOGIN PAGE ==================== */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.login-card {
+    width: 400px;
+    background: #8193B3;
+    border-radius: 12px;
+    padding: 25px 35px 30px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.login-title {
+    width: 230px;
+    margin: 0 auto 20px;
+    border: 3px solid white;
+    border-radius: 50px;
+    color: white;
+    font-size: 22px;
+    padding: 8px;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    color: #314A78;
+    margin-bottom: 25px;
+}
+
+.input-wrapper {
+    margin-bottom: 25px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 20px;
+    background: #ECECEC;
+    font-size: 16px;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+}
+
+.login-btn {
+    display: block;
+    margin: 0 auto;
+    width: 110px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    background: #19325F;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+/* ==================== PROFILE CARD ==================== */
+/* ---------- PROFILE ---------- */
+
+.profile-card{
+    width:620px;
+    background:#8597B6;
+    border-radius:22px;
+
+    padding:20px 28px 24px;
+
+    box-shadow:
+        0 0 50px rgba(0,0,0,.45);
+
+    margin:20px auto;
+}
+
+.profile-header{
     display:flex;
-    min-height:100vh;
+    gap:18px;
+    align-items:flex-start;
+    margin-bottom:25px;
 }
 
-.sidebar{
-    width:260px;
-    background:#1e1e1e;
-    color:white;
-    padding:20px;
+.profile-avatar{
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+    overflow:hidden;
+
+    border:2px solid #233D70;
 }
 
-.sidebar h2{
-    margin-bottom:30px;
+.profile-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.sidebar nav{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.sidebar a{
-    color:white;
-    text-decoration:none;
-}
-
-.content{
+.profile-info{
     flex:1;
-    padding:30px;
 }
 
-/* ---------- LOGIN ---------- */
-
-.login-page{
-    background:#19325F;
-    min-height:100vh;
-}
-
-.topbar{
-    height:70px;
-    background:#415B8D;
-
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-
-    padding:0 20px;
-}
-
-.gold-line{
-    height:8px;
-    background:#D8C89B;
-}
-
-.topbar-icons{
-    display:flex;
-    align-items:center;
-    gap:25px;
-}
-
-.notification{
-    font-size:30px;
+.profile-title{
     color:white;
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.profile-subtitle{
+    color:#1C2F57;
+    font-size:16px;
+    line-height:1.4;
+}
+
+.profile-field{
+    display:flex;
+    gap:16px;
+    margin-bottom:14px;
+}
+
+.profile-field input{
+    flex:1;
+
+    height:34px;
+
+    border:2px solid rgba(255,255,255,.9);
+    border-radius:20px;
+
+    background:transparent;
+
+    color:white;
+
+    padding:0 15px;
+}
+
+.profile-field input::placeholder{
+    color:#cfd5e2;
+}
+
+.profile-field button{
+    width:145px;
+
+    border:none;
+    border-radius:4px;
+
+    background:#19325F;
+    color:white;
+
+    cursor:pointer;
+}
+
+.profile-field button:hover{
+    opacity:.9;
+}
+
+.profile-save-btn{
+    display:block;
+
+    width:135px;
+    height:34px;
+
+    margin:16px auto 0;
+
+    border:none;
+    border-radius:4px;
+
+    background:#19325F;
+    color:white;
+
+    cursor:pointer;
+}
+
+/* ==================== PRACTICE CARD ==================== */
+.practice-card {
+    width: 100%;
+    background: #415B8D;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+}
+
+.practice-card label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.practice-card .skills {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.practice-card .skill-badge {
+    background: #8193B3;
+    border-radius: 20px;
+    padding: 5px 12px;
+}
+
+/* ==================== CHAT / DOCUMENTS ==================== */
+.chat-card, .documents-card {
+    width: 100%;
+    background: #8193B3;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+}
+
+/* ==================== NOTIFICATIONS ==================== */
+.notification-card {
+    background: #415B8D;
+    color: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #415B8D;
+    color: white;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background: #8193B3;
+    color: white;
+}
+
+.btn-secondary:hover {
+    opacity: 0.9;
+}
+
+/* ---------- SLIDE MENU ---------- */
+
+.sidebar-menu{
+    position:fixed;
+
+    top:86px;
+    right:-260px;
+
+    width:240px;
+    height:100vh;
+
+    background:#D8C89B;
+
+    padding:25px;
+
+    border-radius:25px 0 0 25px;
+
+    transition:.3s ease;
+
+    z-index:1000;
+}
+
+.sidebar-menu.active{
+    right:0;
+}
+
+.sidebar-menu a{
+    display:block;
+
+    margin-bottom:25px;
+
+    color:#19325F;
+    text-decoration:none;
+
+    font-size:18px;
+    font-weight:500;
+}
+
+.sidebar-menu a:hover{
+    opacity:.7;
 }
 
 .avatar{
     width:64px;
     height:64px;
+
     border-radius:50%;
-    background:#E4E4E4;
-}
 
-.login-wrapper{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:calc(100vh - 78px);
-}
+    overflow:hidden;
 
-.login-card{
-    width:400px;
-    background:#8193B3;
-    border-radius:12px;
-    padding:25px 35px 30px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.4);
-}
-
-.login-title{
-    width:230px;
-    margin:0 auto 20px;
-    border:3px solid white;
-    border-radius:50px;
-    color:white;
-    text-align:center;
-    font-size:22px;
-    padding:8px;
-}
-
-.login-subtitle{
-    text-align:center;
-    color:#314A78;
-    font-size:16px;
-    margin-bottom:25px;
-}
-
-.input-wrapper{
-    margin-bottom:25px;
-}
-
-.input-wrapper input{
-    width:100%;
-    padding:14px 18px;
-    border:none;
-    border-radius:20px;
-    background:#ECECEC;
-    font-size:16px;
-}
-
-.input-wrapper input:focus{
-    outline:none;
-}
-
-.login-btn{
-    display:block;
-    margin:0 auto;
-    width:110px;
-    height:40px;
-    border:none;
-    border-radius:4px;
-    background:#415B8D;
-    color:white;
-    font-size:16px;
     cursor:pointer;
 }
 
-.login-btn:hover{
-    opacity:0.9;
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ==========================
+   ПОИСК ПРАКТИК
+========================== */
+
+.practice-search-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:40px;
+
+    margin-top:40px;
+}
+
+.practice-search-card{
+    background:#3D5585;
+
+    border-radius:24px;
+
+    padding:16px;
+
+    min-height:220px;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:
+        0 0 35px rgba(0,0,0,.25);
+}
+
+.search-card-label{
+    color:#16274D;
+
+    font-size:16px;
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.search-card-company{
+    background:#546B99;
+
+    border-radius:20px;
+
+    padding:8px 16px;
+
+    color:white;
+
+    font-size:16px;
+
+    margin-bottom:12px;
+}
+
+.practice-search-skills{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:16px;
+}
+
+.skill-badge{
+    background:#546B99;
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:8px 20px;
+
+    font-size:16px;
+}
+
+.practice-search-stats{
+    display:flex;
+
+    gap:40px;
+
+    margin-top:auto;
+
+    color:#16274D;
+
+    font-size:18px;
+    font-weight:700;
+}
+
+.apply-btn{
+    width:160px;
+    height:38px;
+
+    margin:14px auto 0;
+
+    border:none;
+    border-radius:6px;
+
+    background:#18305B;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+}
+
+.apply-btn:hover{
+    background:#102548;
+}
+
+/* ==========================
+   ПАГИНАЦИЯ
+========================== */
+
+.pagination{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:40px;
+}
+
+.pagination button{
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#D8C58B;
+
+    color:#16274D;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+.pagination span{
+    background:#D8C58B;
+
+    padding:10px 20px;
+
+    border-radius:18px;
+
+    color:#16274D;
+
+    font-size:18px;
+    font-weight:600;
 }

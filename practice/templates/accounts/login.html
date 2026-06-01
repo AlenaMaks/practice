@@ -1,40 +1,35 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <title>Авторизация</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-
 <body class="login-page">
-    <header class="topbar">
-        <div class="topbar-icons">
-            <div class="notification">🔔</div>
-            <div class="avatar"></div>
-        </div>
-    </header>
 
-    <div class="gold-line"></div>
-    <main class="login-wrapper">
-        <div class="login-card">
-            <div class="login-title"> Авторизация </div>
-            <p class="login-subtitle">
-                Используйте данные корпоративного портала
-            </p>
-            <form method="post">
-                {% csrf_token %}
-                <div class="input-wrapper">
-                    {{ form.username }}
-                </div>
-                <div class="input-wrapper">
-                    {{ form.password }}
-                </div>
-                <button type="submit" class="login-btn"> Войти </button>
-            </form>
-        </div>
-    </main>
+<header class="topbar"></header>
+
+<div class="gold-line"></div>
+
+<main class="login-wrapper">
+    <div class="login-card">
+        <div class="login-title">Авторизация</div>
+        <p class="login-subtitle">Используйте данные корпоративного портала</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-wrapper">
+                {{ form.username }}
+            </div>
+            <div class="input-wrapper">
+                {{ form.password }}
+            </div>
+            <button type="submit" class="login-btn">Войти</button>
+        </form>
+    </div>
+</main>
+
 </body>
 </html>

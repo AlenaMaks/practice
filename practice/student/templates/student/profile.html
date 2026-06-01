@@ -1,8 +1,160 @@
 {% extends 'layouts/dashboard.html' %}
-
-{% block title %} Профиль {% endblock %}
-
 {% block content %}
-<h1>Личный кабинет студента</h1> <p> {{ request.user.username }} </p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="profile-card">
+
+    <div class="profile-header">
+
+        <div class="profile-avatar">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="Avatar">
+            {% endif %}
+        </div>
+
+        <div class="profile-info">
+            <h1 class="profile-title">{{ user.full_name }}</h1>
+            <div class="profile-subtitle">
+                Бакалавриат очная основа гр.{{ user.group.name }}<br>
+                09.03.01 Информатика и вычислительная техника
+            </div>
+        </div>
+
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="profile-field">
+            {{ form.phone }}
+            <button type="button">Изменить</button>
+        </div>
+
+        <div class="profile-field">
+            {{ form.email }}
+            <button type="button">Изменить</button>
+        </div>
+
+        <button type="submit" class="profile-save-btn">Сохранить</button>
+    </form>
+
+</div>
+
+<div class="profile-practice-layout">
+
+    <div class="profile-sidebar">
+
+        <button class="sidebar-btn active">
+            Текущая практика
+        </button>
+
+        <button class="sidebar-btn">
+            Завершенная практика
+        </button>
+
+        <button class="sidebar-btn disabled">
+            Чат с организацией
+        </button>
+
+        <button class="sidebar-btn">
+            Чат с преподавателем
+        </button>
+
+        <button class="sidebar-btn">
+            Документы
+        </button>
+
+    </div>
+
+    <div class="practice-card">
+
+        <div class="practice-title">
+            Текущая практика
+        </div>
+
+        {% if practice %}
+        <div class="practice-info">
+
+            <div class="practice-section-title">
+                Организация
+            </div>
+
+            <div class="practice-box">
+                {{ practice.company.name }}
+            </div>
+
+            <div class="practice-section-title">
+                Требуемые навыки
+            </div>
+
+            <div class="practice-skills">
+
+                {% for skill in practice.skills_list %}
+
+                    <div class="skill-badge">
+                        {{ skill }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="practice-section-title">
+                Информация по практике
+            </div>
+
+            <div class="practice-description">
+                {{ practice.description|linebreaksbr }}
+            </div>
+
+            <div class="practice-section-title">
+                Контакты
+            </div>
+
+            <div class="practice-contacts">
+
+                {% if practice.company.phone %}
+                <div class="practice-box">
+                    {{ practice.company.phone }}
+                </div>
+                {% endif %}
+
+                {% if practice.company.email %}
+                <div class="practice-box">
+                    {{ practice.company.email }}
+                </div>
+                {% endif %}
+
+            </div>
+
+            <div class="practice-status">
+                Статус:
+                <span>
+                    В процессе
+                </span>
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="practice-empty">
+
+            <div class="practice-empty-title">
+                Практика пока не выбрана
+            </div>
+
+            <div class="practice-empty-text">
+                Для начала работы заполните профиль и выберите место прохождения практики.
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
 
 {% endblock %}

@@ -2,15 +2,78 @@
 
 {% block body %}
 
-<div class="dashboard">
+<header class="topbar">
 
-    {% include 'components/sidebar.html' %}
+    <div class="topbar-icons">
 
-    <main class="content">
-        {% block content %}
-        {% endblock %}
-    </main>
+        <div class="notification">
+            🔔
+        </div>
+
+        <div class="avatar" id="avatar-btn">
+
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="">
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</header>
+
+<div class="gold-line"></div>
+
+{% if messages %}
+
+<div class="messages">
+
+    {% for message in messages %}
+
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+
+    {% endfor %}
 
 </div>
+
+{% endif %}
+
+<div class="sidebar-menu" id="sidebar-menu">
+
+    <a href="{% url 'student_profile' %}">
+        Личный кабинет
+    </a>
+
+    {% if request.user.phone and request.user.email %}
+        <a href="{% url 'student_search' %}">
+            Поиск практики
+        </a>
+    {% else %}
+        <span class="menu-disabled">
+            Поиск практики
+        </span>
+    {% endif %}
+
+    <a href="{% url 'logout' %}">
+        Выйти
+    </a>
+
+</div>
+
+<main class="content">
+
+    <div class="workspace">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</main>
+
+{% load static %}
+<script src="{% static 'js/menu.js' %}"></script>
 
 {% endblock %}
