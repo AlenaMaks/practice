@@ -1,0 +1,8 @@
+{% extends 'layouts/dashboard.html' %}
+
+{% block title %} Профиль {% endblock %}
+
+{% block content %}
+<h1>Личный кабинет студента</h1> <p> {{ request.user.username }} </p>
+
+{% endblock %}

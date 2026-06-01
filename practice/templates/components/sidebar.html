@@ -1,0 +1,37 @@
+<div class="sidebar">
+
+    <h2>Practice</h2>
+
+    <nav>
+
+        <a href="{% url 'student_profile' %}"> Профиль </a>
+        {% if request.user.profile_completed %}
+            <a href="{% url 'student_search' %}"> Поиск практики </a>
+        {% else %}
+            <span class="disabled"> Поиск практики </span>
+        {% endif %}
+        {% if request.user.has_active_practice %}
+            <a href="{% url 'student_practice' %}"> Текущая практика </a>
+        {% else %}
+            <span class="disabled"> Текущая практика </span>
+        {% endif %}
+        {% if request.user.has_active_practice %}
+            <a href="{% url 'student_documents' %}"> Документы </a>
+        {% else %}
+            <span class="disabled"> Документы </span>
+        {% endif %}
+        {% if request.user.has_active_practice %}
+            <a href="{% url 'student_chat' %}"> Чат </a>
+        {% else %}
+            <span class="disabled"> Чат </span>
+        {% endif %}
+        <a href="{% url 'student_notifications' %}"> Уведомления </a>
+    </nav>
+
+    <div class="logout">
+        <a href="{% url 'logout' %}">
+            Выйти
+        </a>
+    </div>
+
+</div>
