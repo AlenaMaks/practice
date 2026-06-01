@@ -212,6 +212,8 @@
 
     background:#3D5585;
 
+    border:2px solid rgba(255,255,255,.25);
+
     border-radius:30px;
 
     padding:35px;
@@ -270,4 +272,70 @@
     line-height:1.5;
 
     max-width:500px;
+}
+
+/* информацио о практике */
+.practice-info{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.practice-section-title{
+    color:#16274D;
+    font-size:18px;
+    font-weight:700;
+}
+
+.practice-box{
+    background:#546B99;
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+}
+
+.practice-skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill-badge{
+    background:#546B99;
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:18px;
+}
+
+.practice-description{
+    background:#546B99;
+    color:white;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    line-height:1.5;
+}
+
+.practice-contacts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.practice-status{
+    margin-top:10px;
+
+    color:white;
+    font-size:20px;
+    font-weight:600;
+}
+
+.practice-status span{
+    color:#44d644;
 }
